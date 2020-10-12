@@ -68,29 +68,17 @@ client.connect(err => {
         const newImg = file.data;
         const encImg = newImg.toString('base64');
 
-
-
         var image = {
             contentType: file.mimetype,
             size: file.size,
             img: Buffer.from(encImg, 'base64')
         };
 
-        doctorsCollection.insertOne({ name, email, image })
+        doctorCollection.insertOne({ name, email, image })
             .then(result => {
-                //     fs.remove(filePath , err => {
-                //         if(err){
-                //             console.log(err);
-                //             res.status(500).send({msg: 'Failed'});
-                //         }
-                //         res.send(result.insertedCount > 0);
-                //     })
-
-                // })
-                return res.send({ name: file.name, path: `/${file.name}` })
-                //    })
+                res.send(result.insertedCount > 0);
             })
-    });
+    })
     app.get('/doctors', (req, res) => {
         doctorsCollection.find({})
             .toArray((err, docs) => {
