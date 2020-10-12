@@ -74,7 +74,7 @@ client.connect(err => {
             img: Buffer.from(encImg, 'base64')
         };
 
-        doctorCollection.insertOne({ name, email, image })
+        doctorsCollection.insertOne({ name, email, image })
             .then(result => {
                 res.send(result.insertedCount > 0);
             })
