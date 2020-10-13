@@ -69,9 +69,9 @@ client.connect(err => {
         const encImg = newImg.toString('base64');
 
         var image = {
-            contentType: req.files.file.mimetype ,
-            size: req.files.file.size ,
-            img: Buffer.from(encImg , 'base64')
+            contentType: file.mimetype,
+            size: file.size,
+            img: Buffer.from(encImg, 'base64')
         };
 
         doctorsCollection.insertOne({ name, email, image })
