@@ -65,12 +65,13 @@ client.connect(err => {
         const file = req.files.file;
         const name = req.body.name;
         const email = req.body.email;
-        const newImg = file.data;
+       
+        
+   const newImg = file.data;
         const encImg = newImg.toString('base64');
-
         var image = {
-            contentType: req.files.file.mimetype,
-            size: req.files.file.size,
+            contentType: file.mimetype,
+            size: file.size,
             img: Buffer.from(encImg, 'base64')
         };
 
